@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -572,7 +571,7 @@ int32_t ais2ih_all_sources_get(const stmdev_ctx_t *ctx,
 }
 
 /**
-  * @brief  Accelerometer X-axis user offset correction expressed in two’s
+  * @brief  Accelerometer X-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[set]
   *
@@ -591,7 +590,7 @@ int32_t ais2ih_usr_offset_x_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 }
 
 /**
-  * @brief  Accelerometer X-axis user offset correction expressed in two’s
+  * @brief  Accelerometer X-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[get]
   *
@@ -610,7 +609,7 @@ int32_t ais2ih_usr_offset_x_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 }
 
 /**
-  * @brief  Accelerometer Y-axis user offset correction expressed in two’s
+  * @brief  Accelerometer Y-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[set]
   *
@@ -629,7 +628,7 @@ int32_t ais2ih_usr_offset_y_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 }
 
 /**
-  * @brief  Accelerometer Y-axis user offset correction expressed in two’s
+  * @brief  Accelerometer Y-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[get]
   *
@@ -648,7 +647,7 @@ int32_t ais2ih_usr_offset_y_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 }
 
 /**
-  * @brief  Accelerometer Z-axis user offset correction expressed in two’s
+  * @brief  Accelerometer Z-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[set]
   *
@@ -667,7 +666,7 @@ int32_t ais2ih_usr_offset_z_set(const stmdev_ctx_t *ctx, uint8_t *buff)
 }
 
 /**
-  * @brief  Accelerometer Z-axis user offset correction expressed in two’s
+  * @brief  Accelerometer Z-axis user offset correction expressed in two's
   *         complement, weight depends on bit USR_OFF_W. The value must be
   *         in the range [-127 127].[get]
   *
@@ -761,7 +760,7 @@ int32_t ais2ih_offset_weight_get(const stmdev_ctx_t *ctx,
 
 /**
   * @brief  Temperature data output register (r). L and H registers
-  *         together express a 16-bit word in two’s complement.[get]
+  *         together express a 16-bit word in two's complement.[get]
   *
   * @param  ctx      read / write interface definitions
   * @param  val      buffer that stores data read
@@ -782,7 +781,7 @@ int32_t ais2ih_temperature_raw_get(const stmdev_ctx_t *ctx, int16_t *val)
 
 /**
   * @brief  Linear acceleration output register. The value is expressed as
-  *         a 16-bit word in two’s complement.[get]
+  *         a 16-bit word in two's complement.[get]
   *
   * @param  ctx      read / write interface definitions
   * @param  val      buffer that stores data read
@@ -3252,5 +3251,3 @@ int32_t ais2ih_fifo_wtm_flag_get(const stmdev_ctx_t *ctx, uint8_t *val)
   * @}
   *
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
