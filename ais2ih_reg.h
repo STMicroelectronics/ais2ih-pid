@@ -585,7 +585,7 @@ typedef struct
 #define AIS2IH_X_OFS_USR                   0x3CU
 #define AIS2IH_Y_OFS_USR                   0x3DU
 #define AIS2IH_Z_OFS_USR                   0x3EU
-#define AIS2IH_CTRL_REG7                   0x3FU
+#define AIS2IH_CTRL7                       0x3FU
 typedef struct
 {
 #if DRV_BYTE_ORDER == DRV_LITTLE_ENDIAN
@@ -607,7 +607,7 @@ typedef struct
   uint8_t hp_ref_mode                : 1;
   uint8_t lpass_on6d                 : 1;
 #endif /* DRV_BYTE_ORDER */
-} ais2ih_ctrl_reg7_t;
+} ais2ih_ctrl7_t;
 
 /**
   * @defgroup AIS2IH_Register_Union
@@ -644,7 +644,7 @@ typedef union
   ais2ih_tap_src_t                 tap_src;
   ais2ih_sixd_src_t                sixd_src;
   ais2ih_all_int_src_t             all_int_src;
-  ais2ih_ctrl_reg7_t               ctrl_reg7;
+  ais2ih_ctrl7_t                   ctrl7;
   bitwise_t                          bitwise;
   uint8_t                            byte;
 } ais2ih_reg_t;

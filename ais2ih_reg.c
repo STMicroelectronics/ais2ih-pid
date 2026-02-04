@@ -700,15 +700,15 @@ int32_t ais2ih_usr_offset_z_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 int32_t ais2ih_offset_weight_set(const stmdev_ctx_t *ctx,
                                  ais2ih_usr_off_w_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.usr_off_w = (uint8_t) val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -726,11 +726,10 @@ int32_t ais2ih_offset_weight_set(const stmdev_ctx_t *ctx,
 int32_t ais2ih_offset_weight_get(const stmdev_ctx_t *ctx,
                                  ais2ih_usr_off_w_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   switch (reg.usr_off_w)
   {
@@ -1046,15 +1045,15 @@ int32_t ais2ih_self_test_get(const stmdev_ctx_t *ctx, ais2ih_st_t *val)
 int32_t ais2ih_data_ready_mode_set(const stmdev_ctx_t *ctx,
                                    ais2ih_drdy_pulsed_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.drdy_pulsed = (uint8_t) val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -1071,11 +1070,14 @@ int32_t ais2ih_data_ready_mode_set(const stmdev_ctx_t *ctx,
 int32_t ais2ih_data_ready_mode_get(const stmdev_ctx_t *ctx,
                                    ais2ih_drdy_pulsed_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
+  if (ret != 0)
+  {
+    return ret;
+  }
 
   switch (reg.drdy_pulsed)
   {
@@ -1119,7 +1121,7 @@ int32_t ais2ih_data_ready_mode_get(const stmdev_ctx_t *ctx,
 int32_t ais2ih_filter_path_set(const stmdev_ctx_t *ctx, ais2ih_fds_t val)
 {
   ais2ih_ctrl6_t ctrl6;
-  ais2ih_ctrl_reg7_t ctrl_reg7;
+  ais2ih_ctrl7_t ctrl_reg7;
   int32_t ret;
 
   ret = ais2ih_read_reg(ctx, AIS2IH_CTRL6, (uint8_t *) &ctrl6, 1);
@@ -1132,13 +1134,13 @@ int32_t ais2ih_filter_path_set(const stmdev_ctx_t *ctx, ais2ih_fds_t val)
 
   if (ret == 0)
   {
-    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &ctrl_reg7, 1);
+    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &ctrl_reg7, 1);
   }
 
   if (ret == 0)
   {
     ctrl_reg7.usr_off_on_out = (uint8_t) val & 0x01U;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &ctrl_reg7, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &ctrl_reg7, 1);
   }
 
   return ret;
@@ -1155,15 +1157,15 @@ int32_t ais2ih_filter_path_set(const stmdev_ctx_t *ctx, ais2ih_fds_t val)
 int32_t ais2ih_filter_path_get(const stmdev_ctx_t *ctx, ais2ih_fds_t *val)
 {
   ais2ih_ctrl6_t ctrl6;
-  ais2ih_ctrl_reg7_t ctrl_reg7;
+  ais2ih_ctrl7_t ctrl_reg7;
   int32_t ret;
 
   ret = ais2ih_read_reg(ctx, AIS2IH_CTRL6, (uint8_t *) &ctrl6, 1);
 
   if (ret == 0)
   {
-    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &ctrl_reg7, 1);
-    if (ret != 0) return ret;
+    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &ctrl_reg7, 1);
+  }
 
     switch ((ctrl6.fds << 4) + ctrl_reg7.usr_off_on_out)
     {
@@ -1268,15 +1270,15 @@ int32_t ais2ih_filter_bandwidth_get(const stmdev_ctx_t *ctx,
   */
 int32_t ais2ih_reference_mode_set(const stmdev_ctx_t *ctx, uint8_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.hp_ref_mode = val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -1292,11 +1294,15 @@ int32_t ais2ih_reference_mode_set(const stmdev_ctx_t *ctx, uint8_t val)
   */
 int32_t ais2ih_reference_mode_get(const stmdev_ctx_t *ctx, uint8_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
+  if (ret != 0)
+  {
+    return ret;
+  }
+
   *val = reg.hp_ref_mode;
 
   return ret;
@@ -1694,7 +1700,7 @@ int32_t ais2ih_pin_int1_route_set(const stmdev_ctx_t *ctx,
                                   ais2ih_ctrl4_int1_pad_ctrl_t *val)
 {
   ais2ih_ctrl5_int2_pad_ctrl_t ctrl5_int2_pad_ctrl;
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
   ret = ais2ih_read_reg(ctx, AIS2IH_CTRL5_INT2_PAD_CTRL,
@@ -1702,7 +1708,7 @@ int32_t ais2ih_pin_int1_route_set(const stmdev_ctx_t *ctx,
 
   if (ret == 0)
   {
-    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   if (ret == 0)
@@ -1729,7 +1735,7 @@ int32_t ais2ih_pin_int1_route_set(const stmdev_ctx_t *ctx,
 
   if (ret == 0)
   {
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -1765,8 +1771,8 @@ int32_t ais2ih_pin_int1_route_get(const stmdev_ctx_t *ctx,
 int32_t ais2ih_pin_int2_route_set(const stmdev_ctx_t *ctx,
                                   ais2ih_ctrl5_int2_pad_ctrl_t *val)
 {
+  ais2ih_ctrl7_t ctrl_reg7;
   ais2ih_ctrl4_int1_pad_ctrl_t ctrl4_int1_pad_ctrl;
-  ais2ih_ctrl_reg7_t reg;
   int32_t ret;
 
   ret = ais2ih_read_reg(ctx, AIS2IH_CTRL4_INT1_PAD_CTRL,
@@ -1774,7 +1780,7 @@ int32_t ais2ih_pin_int2_route_set(const stmdev_ctx_t *ctx,
 
   if (ret == 0)
   {
-    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &ctrl_reg7, 1);
   }
 
   if (ret == 0)
@@ -1786,12 +1792,12 @@ int32_t ais2ih_pin_int2_route_set(const stmdev_ctx_t *ctx,
          ctrl4_int1_pad_ctrl.int1_6d |
          val->int2_sleep_state | val->int2_sleep_chg) != PROPERTY_DISABLE)
     {
-      reg.interrupts_enable = PROPERTY_ENABLE;
+      ctrl_reg7.interrupts_enable = PROPERTY_ENABLE;
     }
 
     else
     {
-      reg.interrupts_enable = PROPERTY_DISABLE;
+      ctrl_reg7.interrupts_enable = PROPERTY_DISABLE;
     }
 
     ret = ais2ih_write_reg(ctx, AIS2IH_CTRL5_INT2_PAD_CTRL,
@@ -1800,7 +1806,7 @@ int32_t ais2ih_pin_int2_route_set(const stmdev_ctx_t *ctx,
 
   if (ret == 0)
   {
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &ctrl_reg7, 1);
   }
 
   return ret;
@@ -1834,15 +1840,15 @@ int32_t ais2ih_pin_int2_route_get(const stmdev_ctx_t *ctx,
   */
 int32_t ais2ih_all_on_int1_set(const stmdev_ctx_t *ctx, uint8_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.int2_on_int1 = val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -1858,11 +1864,15 @@ int32_t ais2ih_all_on_int1_set(const stmdev_ctx_t *ctx, uint8_t val)
   */
 int32_t ais2ih_all_on_int1_get(const stmdev_ctx_t *ctx, uint8_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
+  if (ret != 0)
+  {
+    return ret;
+  }
+
   *val = reg.int2_on_int1;
 
   return ret;
@@ -1979,15 +1989,15 @@ int32_t ais2ih_wkup_dur_get(const stmdev_ctx_t *ctx, uint8_t *val)
 int32_t ais2ih_wkup_feed_data_set(const stmdev_ctx_t *ctx,
                                   ais2ih_usr_off_on_wu_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.usr_off_on_wu = (uint8_t) val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -2004,11 +2014,14 @@ int32_t ais2ih_wkup_feed_data_set(const stmdev_ctx_t *ctx,
 int32_t ais2ih_wkup_feed_data_get(const stmdev_ctx_t *ctx,
                                   ais2ih_usr_off_on_wu_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
+  if (ret != 0)
+  {
+    return ret;
+  }
 
   switch (reg.usr_off_on_wu)
   {
@@ -2890,15 +2903,15 @@ int32_t ais2ih_6d_src_get(const stmdev_ctx_t *ctx, ais2ih_sixd_src_t *val)
 int32_t ais2ih_6d_feed_data_set(const stmdev_ctx_t *ctx,
                                 ais2ih_lpass_on6d_t val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
 
   if (ret == 0)
   {
     reg.lpass_on6d = (uint8_t) val;
-    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
   }
 
   return ret;
@@ -2915,11 +2928,14 @@ int32_t ais2ih_6d_feed_data_set(const stmdev_ctx_t *ctx,
 int32_t ais2ih_6d_feed_data_get(const stmdev_ctx_t *ctx,
                                 ais2ih_lpass_on6d_t *val)
 {
-  ais2ih_ctrl_reg7_t reg;
+  ais2ih_ctrl7_t reg;
   int32_t ret;
 
-  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL_REG7, (uint8_t *) &reg, 1);
-  if (ret != 0) return ret;
+  ret = ais2ih_read_reg(ctx, AIS2IH_CTRL7, (uint8_t *) &reg, 1);
+  if (ret != 0)
+  {
+    return ret;
+  }
 
   switch (reg.lpass_on6d)
   {
