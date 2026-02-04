@@ -2062,7 +2062,8 @@ int32_t ais2ih_wkup_feed_data_get(const stmdev_ctx_t *ctx,
   * @retval          interface status (MANDATORY: return 0 -> no Error)
   *
   */
-int32_t ais2ih_act_mode_set(const stmdev_ctx_t *ctx, ais2ih_sleep_on_t val)
+int32_t ais2ih_act_mode_set(const stmdev_ctx_t *ctx,
+                            ais2ih_sleep_on_t val)
 {
   ais2ih_wake_up_ths_t wake_up_ths;
   ais2ih_wake_up_dur_t wake_up_dur;
@@ -2080,15 +2081,9 @@ int32_t ais2ih_act_mode_set(const stmdev_ctx_t *ctx, ais2ih_sleep_on_t val)
   if (ret == 0)
   {
     wake_up_ths.sleep_on = (uint8_t) val & 0x01U;
-    ret = ais2ih_write_reg(ctx, AIS2IH_WAKE_UP_THS,
-                           (uint8_t *) &wake_up_ths, 1);
-  }
-
-  if (ret == 0)
-  {
     wake_up_dur.stationary = ((uint8_t)val & 0x02U) >> 1;
-    ret = ais2ih_write_reg(ctx, AIS2IH_WAKE_UP_DUR,
-                           (uint8_t *) &wake_up_dur, 1);
+    ret = ais2ih_write_reg(ctx, AIS2IH_WAKE_UP_THS,
+                           (uint8_t *) &wake_up_ths, 2);
   }
 
   return ret;
