@@ -782,10 +782,10 @@ int32_t ais2ih_device_id_get(const stmdev_ctx_t *ctx, uint8_t *buff);
 int32_t ais2ih_auto_increment_set(const stmdev_ctx_t *ctx, uint8_t val);
 int32_t ais2ih_auto_increment_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
-int32_t ais2ih_reset_set(const stmdev_ctx_t *ctx, uint8_t val);
+int32_t ais2ih_reset_set(const stmdev_ctx_t *ctx);
 int32_t ais2ih_reset_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
-int32_t ais2ih_boot_set(const stmdev_ctx_t *ctx, uint8_t val);
+int32_t ais2ih_boot_set(const stmdev_ctx_t *ctx);
 int32_t ais2ih_boot_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
 typedef enum
