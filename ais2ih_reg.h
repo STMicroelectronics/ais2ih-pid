@@ -719,8 +719,8 @@ typedef enum
   AIS2IH_XL_ODR_400Hz          = 0x07,
   AIS2IH_XL_ODR_800Hz          = 0x08,
   AIS2IH_XL_ODR_1k6Hz          = 0x09,
-  AIS2IH_XL_SET_SW_TRIG        = 0x32,  /* Use this only in SINGLE mode */
-  AIS2IH_XL_SET_PIN_TRIG       = 0x12,  /* Use this only in SINGLE mode */
+  AIS2IH_XL_SET_SW_TRIG        = 0x12,  /* Use this only in SINGLE mode */
+  AIS2IH_XL_SET_PIN_TRIG       = 0x22,  /* Use this only in SINGLE mode */
 } ais2ih_odr_t;
 int32_t ais2ih_data_rate_set(const stmdev_ctx_t *ctx, ais2ih_odr_t val);
 int32_t ais2ih_data_rate_get(const stmdev_ctx_t *ctx, ais2ih_odr_t *val);
