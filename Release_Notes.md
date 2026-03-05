@@ -30,7 +30,25 @@ This directory contains the AIS2IH component drivers.
 # Update history
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section6" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section7" checked aria-hidden="true">
+<label for="collapse-section7" aria-hidden="true">V2.3.0 / 05-Mar-2026</label>
+<div>
+
+## Main changes
+
+- Re-order update history with most updated on top
+- Fix style
+- Fix odr_t enum, sw/pin_trig has wrong values
+- Fix act_mode_set API
+- Remove parameter from boot_set/reset_set APIs
+- Rename register CTRL_REG_7 to CTRL7
+- Fix Sensitivity conversion values
+
+##
+
+</div>
+
+<input type="checkbox" id="collapse-section6" aria-hidden="true">
 <label for="collapse-section6" aria-hidden="true">V2.2.0 / 07-Oct-2025</label>
 <div>
 
@@ -42,6 +60,7 @@ This directory contains the AIS2IH component drivers.
 ##
 
 </div>
+
 <input type="checkbox" id="collapse-section5" aria-hidden="true">
 <label for="collapse-section5" aria-hidden="true">V2.1.0 / 07-Jul-2025</label>
 <div>
