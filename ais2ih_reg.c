@@ -223,75 +223,75 @@ int32_t ais2ih_power_mode_get(const stmdev_ctx_t *ctx,
     switch (((ctrl6.low_noise << 4) + (ctrl1.mode << 2) +
              ctrl1.lp_mode))
     {
-      case AIS2IH_HIGH_PERFORMANCE:
+      case 0x04:
         *val = AIS2IH_HIGH_PERFORMANCE;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_4:
+      case 0x03:
         *val = AIS2IH_CONT_LOW_PWR_4;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_3:
+      case 0x02:
         *val = AIS2IH_CONT_LOW_PWR_3;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_2:
+      case 0x01:
         *val = AIS2IH_CONT_LOW_PWR_2;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_12bit:
+      case 0x00:
         *val = AIS2IH_CONT_LOW_PWR_12bit;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_4:
+      case 0x0B:
         *val = AIS2IH_SINGLE_LOW_PWR_4;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_3:
+      case 0x0A:
         *val = AIS2IH_SINGLE_LOW_PWR_3;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_2:
+      case 0x09:
         *val = AIS2IH_SINGLE_LOW_PWR_2;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_12bit:
+      case 0x08:
         *val = AIS2IH_SINGLE_LOW_PWR_12bit;
         break;
 
-      case AIS2IH_HIGH_PERFORMANCE_LOW_NOISE:
+      case 0x14:
         *val = AIS2IH_HIGH_PERFORMANCE_LOW_NOISE;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_LOW_NOISE_4:
+      case 0x13:
         *val = AIS2IH_CONT_LOW_PWR_LOW_NOISE_4;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_LOW_NOISE_3:
+      case 0x12:
         *val = AIS2IH_CONT_LOW_PWR_LOW_NOISE_3;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_LOW_NOISE_2:
+      case 0x11:
         *val = AIS2IH_CONT_LOW_PWR_LOW_NOISE_2;
         break;
 
-      case AIS2IH_CONT_LOW_PWR_LOW_NOISE_12bit:
+      case 0x10:
         *val = AIS2IH_CONT_LOW_PWR_LOW_NOISE_12bit;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_4:
+      case 0x1B:
         *val = AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_4;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_3:
+      case 0x1A:
         *val = AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_3;
         break;
 
-      case AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_2:
+      case 0x19:
         *val = AIS2IH_SINGLE_LOW_PWR_LOW_NOISE_2;
         break;
 
-      case AIS2IH_SINGLE_LOW_LOW_NOISE_PWR_12bit:
+      case 0x18:
         *val = AIS2IH_SINGLE_LOW_LOW_NOISE_PWR_12bit;
         break;
 
@@ -364,51 +364,51 @@ int32_t ais2ih_data_rate_get(const stmdev_ctx_t *ctx, ais2ih_odr_t *val)
   {
     switch ((ctrl3.slp_mode << 4) + ctrl1.odr)
     {
-      case AIS2IH_XL_ODR_OFF:
+      case 0x00:
         *val = AIS2IH_XL_ODR_OFF;
         break;
 
-      case AIS2IH_XL_ODR_1Hz6_LP_ONLY:
+      case 0x01:
         *val = AIS2IH_XL_ODR_1Hz6_LP_ONLY;
         break;
 
-      case AIS2IH_XL_ODR_12Hz5:
+      case 0x02:
         *val = AIS2IH_XL_ODR_12Hz5;
         break;
 
-      case AIS2IH_XL_ODR_25Hz:
+      case 0x03:
         *val = AIS2IH_XL_ODR_25Hz;
         break;
 
-      case AIS2IH_XL_ODR_50Hz:
+      case 0x04:
         *val = AIS2IH_XL_ODR_50Hz;
         break;
 
-      case AIS2IH_XL_ODR_100Hz:
+      case 0x05:
         *val = AIS2IH_XL_ODR_100Hz;
         break;
 
-      case AIS2IH_XL_ODR_200Hz:
+      case 0x06:
         *val = AIS2IH_XL_ODR_200Hz;
         break;
 
-      case AIS2IH_XL_ODR_400Hz:
+      case 0x07:
         *val = AIS2IH_XL_ODR_400Hz;
         break;
 
-      case AIS2IH_XL_ODR_800Hz:
+      case 0x08:
         *val = AIS2IH_XL_ODR_800Hz;
         break;
 
-      case AIS2IH_XL_ODR_1k6Hz:
+      case 0x09:
         *val = AIS2IH_XL_ODR_1k6Hz;
         break;
 
-      case AIS2IH_XL_SET_SW_TRIG:
+      case 0x12:
         *val = AIS2IH_XL_SET_SW_TRIG;
         break;
 
-      case AIS2IH_XL_SET_PIN_TRIG:
+      case 0x22:
         *val = AIS2IH_XL_SET_PIN_TRIG;
         break;
 
@@ -509,19 +509,19 @@ int32_t ais2ih_full_scale_get(const stmdev_ctx_t *ctx, ais2ih_fs_t *val)
 
   switch (reg.fs)
   {
-    case AIS2IH_2g:
+    case 0x00:
       *val = AIS2IH_2g;
       break;
 
-    case AIS2IH_4g:
+    case 0x01:
       *val = AIS2IH_4g;
       break;
 
-    case AIS2IH_8g:
+    case 0x02:
       *val = AIS2IH_8g;
       break;
 
-    case AIS2IH_16g:
+    case 0x03:
       *val = AIS2IH_16g;
       break;
 
@@ -753,11 +753,11 @@ int32_t ais2ih_offset_weight_get(const stmdev_ctx_t *ctx,
   {
     switch (reg.usr_off_w)
     {
-      case AIS2IH_LSb_977ug:
+      case 0x00:
         *val = AIS2IH_LSb_977ug;
         break;
 
-      case AIS2IH_LSb_15mg6:
+      case 0x01:
         *val = AIS2IH_LSb_15mg6;
         break;
 
@@ -1054,15 +1054,15 @@ int32_t ais2ih_self_test_get(const stmdev_ctx_t *ctx, ais2ih_st_t *val)
 
   switch (reg.st)
   {
-    case AIS2IH_XL_ST_DISABLE:
+    case 0x00:
       *val = AIS2IH_XL_ST_DISABLE;
       break;
 
-    case AIS2IH_XL_ST_POSITIVE:
+    case 0x01:
       *val = AIS2IH_XL_ST_POSITIVE;
       break;
 
-    case AIS2IH_XL_ST_NEGATIVE:
+    case 0x02:
       *val = AIS2IH_XL_ST_NEGATIVE;
       break;
 
@@ -1121,11 +1121,11 @@ int32_t ais2ih_data_ready_mode_get(const stmdev_ctx_t *ctx,
 
   switch (reg.drdy_pulsed)
   {
-    case AIS2IH_DRDY_LATCHED:
+    case 0x00:
       *val = AIS2IH_DRDY_LATCHED;
       break;
 
-    case AIS2IH_DRDY_PULSED:
+    case 0x01:
       *val = AIS2IH_DRDY_PULSED;
       break;
 
@@ -1212,15 +1212,15 @@ int32_t ais2ih_filter_path_get(const stmdev_ctx_t *ctx,
   {
     switch ((ctrl6.fds << 4) + ctrl_reg7.usr_off_on_out)
     {
-      case AIS2IH_LPF_ON_OUT:
+      case 0x00:
         *val = AIS2IH_LPF_ON_OUT;
         break;
 
-      case AIS2IH_USER_OFFSET_ON_OUT:
+      case 0x01:
         *val = AIS2IH_USER_OFFSET_ON_OUT;
         break;
 
-      case AIS2IH_HIGH_PASS_ON_OUT:
+      case 0x10:
         *val = AIS2IH_HIGH_PASS_ON_OUT;
         break;
 
@@ -1252,6 +1252,7 @@ int32_t ais2ih_filter_bandwidth_set(const stmdev_ctx_t *ctx,
 
   if (ret == 0)
   {
+
     reg.bw_filt = (uint8_t) val;
     ret = ais2ih_write_reg(ctx, AIS2IH_CTRL6, (uint8_t *) &reg, 1);
   }
@@ -1412,11 +1413,11 @@ int32_t ais2ih_spi_mode_get(const stmdev_ctx_t *ctx, ais2ih_sim_t *val)
 
   switch (reg.sim)
   {
-    case AIS2IH_SPI_4_WIRE:
+    case 0x00:
       *val = AIS2IH_SPI_4_WIRE;
       break;
 
-    case AIS2IH_SPI_3_WIRE:
+    case 0x01:
       *val = AIS2IH_SPI_3_WIRE;
       break;
 
@@ -1476,11 +1477,11 @@ int32_t ais2ih_i2c_interface_get(const stmdev_ctx_t *ctx,
 
   switch (reg.i2c_disable)
   {
-    case AIS2IH_I2C_ENABLE:
+    case 0x00:
       *val = AIS2IH_I2C_ENABLE;
       break;
 
-    case AIS2IH_I2C_DISABLE:
+    case 0x01:
       *val = AIS2IH_I2C_DISABLE;
       break;
 
@@ -1539,11 +1540,11 @@ int32_t ais2ih_cs_mode_get(const stmdev_ctx_t *ctx,
 
   switch (reg.cs_pu_disc)
   {
-    case AIS2IH_PULL_UP_CONNECT:
+    case 0x00:
       *val = AIS2IH_PULL_UP_CONNECT;
       break;
 
-    case AIS2IH_PULL_UP_DISCONNECT:
+    case 0x01:
       *val = AIS2IH_PULL_UP_DISCONNECT;
       break;
 
@@ -1614,11 +1615,11 @@ int32_t ais2ih_pin_polarity_get(const stmdev_ctx_t *ctx,
 
   switch (reg.h_lactive)
   {
-    case AIS2IH_ACTIVE_HIGH:
+    case 0x00:
       *val = AIS2IH_ACTIVE_HIGH;
       break;
 
-    case AIS2IH_ACTIVE_LOW:
+    case 0x01:
       *val = AIS2IH_ACTIVE_LOW;
       break;
 
@@ -1677,11 +1678,11 @@ int32_t ais2ih_int_notification_get(const stmdev_ctx_t *ctx,
 
   switch (reg.lir)
   {
-    case AIS2IH_INT_PULSED:
+    case 0x00:
       *val = AIS2IH_INT_PULSED;
       break;
 
-    case AIS2IH_INT_LATCHED:
+    case 0x01:
       *val = AIS2IH_INT_LATCHED;
       break;
 
@@ -1739,11 +1740,11 @@ int32_t ais2ih_pin_mode_get(const stmdev_ctx_t *ctx,
 
   switch (reg.pp_od)
   {
-    case AIS2IH_PUSH_PULL:
+    case 0x00:
       *val = AIS2IH_PUSH_PULL;
       break;
 
-    case AIS2IH_OPEN_DRAIN:
+    case 0x01:
       *val = AIS2IH_OPEN_DRAIN;
       break;
 
@@ -2105,11 +2106,11 @@ int32_t ais2ih_wkup_feed_data_get(const stmdev_ctx_t *ctx,
 
   switch (reg.usr_off_on_wu)
   {
-    case AIS2IH_HP_FEED:
+    case 0x00:
       *val = AIS2IH_HP_FEED;
       break;
 
-    case AIS2IH_USER_OFFSET_FEED:
+    case 0x01:
       *val = AIS2IH_USER_OFFSET_FEED;
       break;
 
@@ -2198,15 +2199,15 @@ int32_t ais2ih_act_mode_get(const stmdev_ctx_t *ctx,
   {
     switch ((wake_up_dur.stationary << 1) + wake_up_ths.sleep_on)
     {
-      case AIS2IH_NO_DETECTION:
+      case 0x00:
         *val = AIS2IH_NO_DETECTION;
         break;
 
-      case AIS2IH_DETECT_ACT_INACT:
+      case 0x01:
         *val = AIS2IH_DETECT_ACT_INACT;
         break;
 
-      case AIS2IH_DETECT_STAT_MOTION:
+      case 0x03:
         *val = AIS2IH_DETECT_STAT_MOTION;
         break;
 
@@ -2417,28 +2418,36 @@ int32_t ais2ih_tap_axis_priority_get(const stmdev_ctx_t *ctx,
 
   switch (reg.tap_prior)
   {
-    case AIS2IH_XYZ:
+    case 0x00:
       *val = AIS2IH_XYZ;
       break;
 
-    case AIS2IH_YXZ:
+    case 0x01:
       *val = AIS2IH_YXZ;
       break;
 
-    case AIS2IH_XZY:
+    case 0x02:
       *val = AIS2IH_XZY;
       break;
 
-    case AIS2IH_ZYX:
+    case 0x03:
       *val = AIS2IH_ZYX;
       break;
 
-    case AIS2IH_YZX:
+    case 0x04:
+      *val = AIS2IH_XYZ;
+      break;
+
+    case 0x05:
       *val = AIS2IH_YZX;
       break;
 
-    case AIS2IH_ZXY:
+    case 0x06:
       *val = AIS2IH_ZXY;
+      break;
+
+    case 0x07:
+      *val = AIS2IH_ZYX;
       break;
 
     default:
@@ -2864,11 +2873,11 @@ int32_t ais2ih_tap_mode_get(const stmdev_ctx_t *ctx,
 
   switch (reg.single_double_tap)
   {
-    case AIS2IH_ONLY_SINGLE:
+    case 0x00:
       *val = AIS2IH_ONLY_SINGLE;
       break;
 
-    case AIS2IH_BOTH_SINGLE_DOUBLE:
+    case 0x01:
       *val = AIS2IH_BOTH_SINGLE_DOUBLE;
       break;
 
@@ -3072,11 +3081,11 @@ int32_t ais2ih_6d_feed_data_get(const stmdev_ctx_t *ctx,
 
   switch (reg.lpass_on6d)
   {
-    case AIS2IH_ODR_DIV_2_FEED:
+    case 0x00:
       *val = AIS2IH_ODR_DIV_2_FEED;
       break;
 
-    case AIS2IH_LPF2_FEED:
+    case 0x01:
       *val = AIS2IH_LPF2_FEED;
       break;
 
@@ -3219,35 +3228,35 @@ int32_t ais2ih_ff_threshold_get(const stmdev_ctx_t *ctx,
 
   switch (reg.ff_ths)
   {
-    case AIS2IH_FF_TSH_5LSb_FS2g:
+    case 0x00:
       *val = AIS2IH_FF_TSH_5LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_7LSb_FS2g:
+    case 0x01:
       *val = AIS2IH_FF_TSH_7LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_8LSb_FS2g:
+    case 0x02:
       *val = AIS2IH_FF_TSH_8LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_10LSb_FS2g:
+    case 0x03:
       *val = AIS2IH_FF_TSH_10LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_11LSb_FS2g:
+    case 0x04:
       *val = AIS2IH_FF_TSH_11LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_13LSb_FS2g:
+    case 0x05:
       *val = AIS2IH_FF_TSH_13LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_15LSb_FS2g:
+    case 0x06:
       *val = AIS2IH_FF_TSH_15LSb_FS2g;
       break;
 
-    case AIS2IH_FF_TSH_16LSb_FS2g:
+    case 0x07:
       *val = AIS2IH_FF_TSH_16LSb_FS2g;
       break;
 
@@ -3366,23 +3375,23 @@ int32_t ais2ih_fifo_mode_get(const stmdev_ctx_t *ctx,
 
   switch (reg.fmode)
   {
-    case AIS2IH_BYPASS_MODE:
+    case 0x00:
       *val = AIS2IH_BYPASS_MODE;
       break;
 
-    case AIS2IH_FIFO_MODE:
+    case 0x01:
       *val = AIS2IH_FIFO_MODE;
       break;
 
-    case AIS2IH_STREAM_TO_FIFO_MODE:
+    case 0x03:
       *val = AIS2IH_STREAM_TO_FIFO_MODE;
       break;
 
-    case AIS2IH_BYPASS_TO_STREAM_MODE:
+    case 0x04:
       *val = AIS2IH_BYPASS_TO_STREAM_MODE;
       break;
 
-    case AIS2IH_STREAM_MODE:
+    case 0x06:
       *val = AIS2IH_STREAM_MODE;
       break;
 
